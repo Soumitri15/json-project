@@ -118,29 +118,30 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#newPostForm').submit(function(event) {
-            event.preventDefault(); // Prevent default form submission
-            
-            // Get values from form
-            var title = $('#postTitle').val();
-            var content = $('#postContent').val();
-            
-            // Create new card HTML
-            var newCard = `
-                <div class="card">
-                    <h3>${title}</h3>
-                    <p>${content}</p>
-                </div>
-            `;
-            
-            // Append new card to card container
-            $('#cardContainer').append(newCard);
-            
-            // Clear form fields after submission
-            $('#postTitle').val('');
-            $('#postContent').val('');
-        });
+    $('#newPostForm').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // Get values from form
+        var title = $('#postTitle').val();
+        var content = $('#postContent').val();
+        
+        // Create new card HTML
+        var newCard = `
+            <div class="card">
+                <h3>${title}</h3>
+                <p>${content}</p>
+            </div>
+        `;
+        
+        // Prepend new card to card container (instead of append)
+        $('#cardContainer').prepend(newCard);
+        
+        // Clear form fields after submission
+        $('#postTitle').val('');
+        $('#postContent').val('');
     });
+});
+
 </script>
 
 </body>
